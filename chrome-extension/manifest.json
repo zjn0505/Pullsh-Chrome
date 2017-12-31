@@ -3,7 +3,7 @@
 
   "name": "Pullsh",
   "description": "The extension help you quickly use Pullsh service",
-  "version": "1.1",
+  "version": "1.2",
   
   "icons" : {
 		"48" : "icon/ic_pullsh.png",
