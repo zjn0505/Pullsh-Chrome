@@ -18,7 +18,6 @@
     "default_title": "Create a pull or push"
   },
   "permissions": [
-    "activeTab",
     "https://api.jienan.xyz/"
   ]
 }

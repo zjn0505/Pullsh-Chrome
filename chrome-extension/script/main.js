@@ -9,8 +9,15 @@ function postMemo() {
         var json = JSON.parse(http.response);
         if (json.result == 200) {
           var alertSuccess = document.getElementById("push_success");
-          alertSuccess.innerHTML = "<strong>Success!</strong> You have created a memo with id <strong>"+json.memo._id+"</strong>.";
-          alertSuccess.style.display = "inherit"
+          alertSuccess.innerHTML = "<strong>Success!</strong> You have created a memo with id <span style='font-family: monaco, Consolas, monospace;'><a target='_blank' href='https://pullsh.me/"+json.memo._id+"'>"+json.memo._id+"</a></span>.";
+          alertSuccess.style.display = "inherit";
+          alertSuccess.addEventListener('click', function(e) {
+            var target = e.target || e.srcElement;
+            if (target.tagName != "A") {
+              alertSuccess.style.display = "none";
+              copyToClipboard("https://pullsh.me/" + json.memo._id, "Memo link copied!");
+            }
+          });
           saveToHistory(json);
         }
     }
@@ -29,8 +36,8 @@ function readMemo() {
         var json = JSON.parse(http.response);
         if (json.result == 200) {
           $("#myModal").show();
-          $("#modal-title").html("Memo Id : " + json.memo._id);
-          $("#modal-content").html(processText(json.memo.msg));
+          $("#modal-title").html("Memo Id : <span style='font-family: monaco, Consolas, monospace;'><strong>" + json.memo._id + "</strong></span>");
+          $("#modal-content").html("<p>"+processText(json.memo.msg)+"</p>");
           $('#myBtn').click();
           saveToHistory(json);
         }
@@ -40,12 +47,22 @@ function readMemo() {
   return false;
 }
 
-function copyToClipboard(element) {
+function copyToClipboard(text, toast) {
   var $temp = $("<input>");
   $("body").append($temp);
-  $temp.val($(element).text()).select();
+  $temp.val(text).select();
   document.execCommand("copy");
   $temp.remove();
+  if (toast != null && toast != undefined && toast != "") {
+    $.toast({
+      text: toast,
+      hideAfter: 1000,
+      loader:false,
+      allowToastClose: false,
+      position: 'bottom-center',
+      textAlign:'center'
+    });
+  }
 }
 
 function createCORSRequest(method, url) {
@@ -87,9 +104,14 @@ function rebuildTable() {
       var row = document.getElementById("table-his").getElementsByTagName("tbody")[0].insertRow(0);
       var cellId = row.insertCell(0);
       var cellContent = row.insertCell(1);
-      cellId.innerHTML = "<strong>" + json[key].memo._id + "</strong>";
+      cellId.innerHTML = "<span style='font-family: monaco, Consolas, monospace;'><a href='https://pullsh.me/" + json[key].memo._id + "'>" + json[key].memo._id + "</a></span>";
       cellContent.innerHTML = processText(json[key].memo.msg);
-      
+      cellContent.addEventListener('click', function(e) {
+        var target = e.target || e.srcElement;
+        if (target.tagName != "A") {
+          copyToClipboard(e.currentTarget.textContent, "Memo copied!");
+        }
+      });
     }
   }
 }
@@ -103,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       postMemo();
   });
   document.getElementById('btn-modal').addEventListener('click', () => {
-      copyToClipboard("#modal-content");
+      copyToClipboard($("#modal-content").text(), "");
   });
 });
 
