@@ -14,8 +14,10 @@ function postMemo() {
           alertSuccess.addEventListener('click', function(e) {
             var target = e.target || e.srcElement;
             if (target.tagName != "A") {
-              alertSuccess.style.display = "none";
               copyToClipboard("https://pullsh.me/" + json.memo._id, "Memo link copied!");
+              setTimeout(function() {
+                  alertSuccess.style.display = "none";
+              }, 1000);
             }
           });
           saveToHistory(json);
