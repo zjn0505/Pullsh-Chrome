@@ -1,4 +1,7 @@
 function postMemo() {
+  if ($("#push_input").val() == "") {
+    return false;
+  }
   var host = "https://api.jienan.xyz/memo"
   var params = $("form[name='create_memo']").serialize()
   var http = new createCORSRequest("POST", host);
@@ -29,6 +32,9 @@ function postMemo() {
 }
 
 function readMemo() {
+  if ($("input[name='memoId']").val() == "") {
+    return false;
+  }
   var host = "https://api.jienan.xyz/memo/?" + $("form[name='read_memo']").serialize();
   var http = new createCORSRequest("GET", host);
   http.open("GET", host, true);
