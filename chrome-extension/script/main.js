@@ -13,13 +13,13 @@ function postMemo() {
         if (json.result == 200) {
           var alertSuccess = document.getElementById("push_success");
           alertSuccess.innerHTML = "<strong>Success!</strong> You have created a memo with id <span style='font-family: monaco, Consolas, monospace;'><a target='_blank' href='https://pullsh.me/"+json.memo._id+"'>"+json.memo._id+"</a></span>.";
-          alertSuccess.style.display = "inherit";
+          $(".alert-success").fadeIn(1000);
           alertSuccess.addEventListener('click', function(e) {
             var target = e.target || e.srcElement;
             if (target.tagName != "A") {
               copyToClipboard("https://pullsh.me/" + json.memo._id, "Memo link copied!");
               setTimeout(function() {
-                  alertSuccess.style.display = "none";
+                  $(".alert-success").fadeOut(1000);
               }, 1000);
             }
           });
