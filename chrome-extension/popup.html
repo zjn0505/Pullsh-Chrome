@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="min-width:600px; min-height: 500px; max-height: 700px">
+<html lang="en" style="min-width:600px; min-height: 520px; max-height: 700px">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,6 +17,9 @@
     .modal-body p {
       word-wrap: break-word;
     }
+    .btn-primary {background-color:#26A599; border-color:#FFF;}
+    .btn-primary:hover {background-color:#37B699;border-color:#FFF;}
+    .btn-primary:active, .btn-primary:focus {background-color:#159499 !important;border-color:#FFF !important;}
   </style>
   <script src="./script/jquery-2.1.3.min.js"></script>
   <script src="./script/jquery.toast.min.js"></script>
@@ -45,9 +48,8 @@
         <div class="row">
           <div class="col-xs-12 col-10">
             <form name="create_memo" method="post" action="https://api.jienan.xyz/memo">
-            <textarea id="push_input" name="msg" rows="10" style="width:100%; resize:none;" tabindex="1"></textarea>
-            <br />
-            <input type="submit" value="Create" id="btn-push"/></form>
+            <textarea id="push_input" name="msg" rows="10" class="form-control" style="width:100%; resize:none;" tabindex="1"></textarea>
+            <input type="submit" value="Create" id="btn-push" style="margin-top: 5px;" class="btn btn-primary" /></form>
           </div>
         </div>
         <p>
@@ -58,9 +60,9 @@
         <form name="read_memo" method="get" action="https://api.jienan.xyz/memo">
         <!-- <textarea name="memoId" rows="2" style="resize: none"></textarea><br> -->
         <input type="text" name="memoId" class="form-control" style="width: 100px; font-family: monaco, Consolas, 'Lucida Console', monospace;" /> 
-        <input type="submit" value="Read" id="btn-pull"/></form>
+        <input type="submit" value="Read" id="btn-pull" style="margin-top: 5px;" class="btn btn-primary"/></form>
       </div>
-
+      <br>
     <!-- Modal -->
     <div class="modal fade in" id="myModal" role="dialog">
       <div class="modal-dialog">
