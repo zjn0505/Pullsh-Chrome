@@ -14,7 +14,7 @@ You can download it from Google Play, or use the [webapp](https://jienan.xyz/m)
 
 ## EULA
 As the author of apps/service,
-- I won't READ or USE your memo content for any purpost and I take no responsibility for what is published in users' memo.
+- I won't READ or USE your memo content for any purpose and I take no responsibility for what is published in users' memo.
 - I won't guarantee the usability and reliability for the app/service, and take no responsibility for any data loss. 
 
 As the user of the apps/serveice,
