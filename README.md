@@ -1,13 +1,16 @@
 # Pullsh
 This is the repository for app pullsh
 
-You can download it from Google Play, or use the [webapp](https://jienan.xyz/m)
+You can download it on Android, Chrome Extension, or use the webapp on https://pullsh.me
 
 - Create your memo and save it on cloud. (Push)
 - Read it from anywhere, with the memo id. (Pull)
 - Secure it by assigning expiration time and/or access countdown.
-- Share it by id or full link. e.g. *MeMo* or [https://jienan.xyz/m/MeMo"](https://jienan.xyz/m/MeMo).
-- Share a memo of link with "-" at the end for quick access. e.g. [https://jienan.xyz/m/LiNk-](https://jienan.xyz/m/LiNk-)
+- Share it by id or full link. e.g. *MeMo* or [https://pullsh.me/MeMo"](https://pullsh.me/MeMo).
+- Share a memo of link with "-" at the end for quick access. e.g. [https://pullsh.me/LiNk-](https://pullsh.me/LiNk-)
+- Android app, on [Google Play](https://play.google.com/store/apps/details?id=xyz.jienan.pushpull), from [source code](https://github.com/zjn0505/Pullsh-Android).
+- Chrome extension, on [Chrome Store](https://chrome.google.com/webstore/detail/pullsh/efinljejnfeaongopbnijppjolghpook) from [source code](https://github.com/zjn0505/Pullsh)
+- [Pullsh.me](https://pullsh.me), from [source code](https://github.com/zjn0505/MemoNode) 
 
 
 
