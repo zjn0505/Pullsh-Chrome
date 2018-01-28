@@ -1,6 +1,8 @@
 # Pullsh
 This is the repository for app pullsh on Chrome Extension
 
+Pullsh - short id memo app, turning your memo into a short id and storing it on cloud to be accessed anywhere.
+
 You can download it on Android, Chrome Extension, or use the webapp on https://pullsh.me
 
 - Create your memo and save it on cloud. (Push)
