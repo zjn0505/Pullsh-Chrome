@@ -1,5 +1,5 @@
 # Pullsh
-This is the repository for app pullsh
+This is the repository for app pullsh on Chrome Extension
 
 You can download it on Android, Chrome Extension, or use the webapp on https://pullsh.me
 
