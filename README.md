@@ -19,6 +19,7 @@ You can download it on Android, Chrome Extension, or use the webapp on https://p
 
 ## EULA
 As the author of apps/service,
+- I will collect the usage on the Android app for statistics and optimization purpose through Firebase Analytics. No sensitive data such as personal info, memo content will be collected. 
 - I won't READ or USE your memo content for any purpose and I take no responsibility for what is published in users' memo.
 - I won't guarantee the usability and reliability for the app/service, and take no responsibility for any data loss. 
 
