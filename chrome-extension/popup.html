@@ -52,7 +52,8 @@
           <div class="col-xs-12 col-10">
             <form name="create_memo" method="post" action="https://api.jienan.xyz/memo">
             <textarea id="push_input" name="msg" rows="10" class="form-control" style="width:100%; resize:none;" tabindex="1"></textarea>
-            <input type="submit" value="Create" id="btn-push" style="margin-top: 5px;" class="btn btn-primary" /></form>
+            <input type="submit" value="Create" id="btn-push" style="margin-top: 5px;" class="btn btn-primary" />
+			<input type="submit" value="Pullsh URL" id="btn-push-link" style="margin-top: 5px;" class="btn btn-primary" /></form>
           </div>
         </div>
         <p>
@@ -108,7 +109,7 @@
     </div>
     <div id="history" class="tab-pane fade">
       <div class="container">
-        <table class="table table-hover" id="table-his">
+        <table class="table table-hover" id="table-his" style="table-layout: fixed; word-wrap: break-word">
           <thead>
             <tr>
               <th style="width: 25%">Memo</th>

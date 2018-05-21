@@ -40,6 +40,47 @@ function postMemo() {
   return false;
 }
 
+function postPullshUrl() {
+  getCurrentTabUrl(function(url) {
+    var host = "https://api.jienan.xyz/memo"
+    var params = "msg="+encodeURIComponent(url);
+    var http = new createCORSRequest("POST", host);
+    http.open("POST", host, true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.onreadystatechange = function() {
+      if(http.readyState == 4) {
+        if (http.status == 200) {
+          var json = JSON.parse(http.response);
+          if (json.result == 200) {
+            var alertSuccess = document.getElementById("push_success");
+            alertSuccess.innerHTML = "<strong>Success!</strong> You have created a pullsh url with id <span style='font-family: monaco, Consolas, monospace;'><a target='_blank' href='https://pullsh.me/"+json.memo._id+"'>"+json.memo._id+"</a></span>.";
+            $(".alert-success").fadeIn(1000);
+            alertSuccess.addEventListener('click', function(e) {
+              var target = e.target || e.srcElement;
+              if (target.tagName != "A") {
+                copyToClipboard("https://pullsh.me/" + json.memo._id + "-", "Pullsh link copied!");
+                setTimeout(function() {
+                    $(".alert-success").fadeOut(1000);
+                }, 1000);
+              }
+            });
+            saveToHistory(json);
+          }
+        }
+        $("#pleaseWaitDialog").modal('hide');
+      }
+    }
+    http.ontimeout = function(e) {
+      $("#pleaseWaitDialog").modal('hide');
+      // show error here
+    }
+    http.send(params);
+    $("#pleaseWaitDialog").modal();
+    $("#progress_header").text("Creating a Pullsh URL");
+    return false;  
+  })
+}
+
 function readMemo() {
   if ($("input[name='memoId']").val() == "") {
     return false;
@@ -149,6 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('btn-push').addEventListener('click', () => {
       postMemo();
+  });
+  document.getElementById('btn-push-link').addEventListener('click', () => {
+      postPullshUrl();
   });
   document.getElementById('btn-modal').addEventListener('click', () => {
       copyToClipboard($("#modal-content").text(), "");
